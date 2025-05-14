@@ -1,6 +1,7 @@
 package de.muenchen.oss.eogov.routing.adapter.in.soap;
 
 import de.cit.xmlns.intelliform._2009.webservices.backend.Deposit;
+import de.cit.xmlns.intelliform._2009.webservices.backend.DepositData;
 import de.muenchen.oss.eogov.routing.application.port.in.MessageDispatchInPort;
 import jakarta.xml.bind.JAXBElement;
 import lombok.RequiredArgsConstructor;
@@ -19,8 +20,7 @@ public class SoapAdapter {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "deposit")
     public void deposit(@RequestPayload final JAXBElement<Deposit> message) {
-        log.info("test");
-        //final DepositData data = deposit.getValue().getData();
-        //messageDispatchInPort.soapDeposit(data);
+        final DepositData data = message.getValue().getData();
+        messageDispatchInPort.soapDeposit(data);
     }
 }
