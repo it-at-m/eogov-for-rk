@@ -26,7 +26,7 @@
 
         <!-- Core Frameworks -->
         <spring-cloud-dependencies.version>2024.0.1</spring-cloud-dependencies.version> <!-- Must match the chosen Spring Boot version -->
-        <refarch-integrations.version>1.6.0-SNAPSHOT</refarch-integrations.version>
+        <refarch-integrations.version>1.5.1</refarch-integrations.version>
 
         <!-- Logging -->
         <logstash-logback-encoder.version>8.1</logstash-logback-encoder.version>
