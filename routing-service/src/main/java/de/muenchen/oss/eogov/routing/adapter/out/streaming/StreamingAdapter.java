@@ -24,7 +24,7 @@ public class StreamingAdapter implements SendMessageOutPort {
             throw new MessageOutException(exceptionMessage, e);
         }
         if (!successful) {
-            final String exceptionMessage = String.format("Message with id %s could be sent.", message.id());
+            final String exceptionMessage = String.format("Message with id %s couldn't be sent.", message.id());
             throw new MessageOutException(exceptionMessage);
         }
     }
