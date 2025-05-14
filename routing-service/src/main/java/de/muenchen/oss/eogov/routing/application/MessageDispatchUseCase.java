@@ -10,16 +10,10 @@ import de.muenchen.oss.eogov.routing.domain.mapper.MessageMapper;
 import de.muenchen.oss.eogov.routing.domain.model.Attachment;
 import de.muenchen.oss.eogov.routing.domain.model.Message;
 import java.io.IOException;
-import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tika.mime.MimeTypeException;
@@ -82,8 +76,7 @@ public class MessageDispatchUseCase implements MessageDispatchInPort {
     protected String resolveDestinationBinding(final DepositData data) {
         return data.getCustomParameters().stream()
                 .filter(
-                    i -> i.getKey().equals(ROUTING_KEY)
-                )
+                        i -> i.getKey().equals(ROUTING_KEY))
                 .map(Entry::getValue)
                 .findFirst()
                 // TODO custom Exception

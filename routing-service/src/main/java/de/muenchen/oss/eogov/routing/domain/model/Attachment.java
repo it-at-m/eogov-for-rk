@@ -10,6 +10,5 @@ public record Attachment(
         @NotBlank String name,
         @NotBlank String contentType,
         Map<String, String> attributes,
-        String presignedUrl
-) {
+        String presignedUrl) {
 }

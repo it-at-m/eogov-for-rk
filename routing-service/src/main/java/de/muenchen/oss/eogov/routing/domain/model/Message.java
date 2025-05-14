@@ -23,6 +23,5 @@ public record Message(
         String username,
         @NotNull ZonedDateTime timestamp,
         List<Attachment> attachments,
-        Map<String, String> customParameters
-) {
+        Map<String, String> customParameters) {
 }
