@@ -16,15 +16,16 @@ public class StreamingAdapter implements SendMessageOutPort {
 
     @Override
     public void sendMessage(final String destinationBinding, final Message message) {
+        final boolean successful;
         try {
-            final boolean successful = streamBridge.send(destinationBinding, message);
-            if (!successful) {
-                final String exceptionMessage = String.format("Message with id %s could be sent.", message.id());
-                throw new MessageOutException(exceptionMessage);
-            }
+            successful = streamBridge.send(destinationBinding, message);
         } catch (final RuntimeException e) {
             final String exceptionMessage = String.format("Exception while sending message with id %s.", message.id());
             throw new MessageOutException(exceptionMessage, e);
+        }
+        if (!successful) {
+            final String exceptionMessage = String.format("Message with id %s could be sent.", message.id());
+            throw new MessageOutException(exceptionMessage);
         }
     }
 }

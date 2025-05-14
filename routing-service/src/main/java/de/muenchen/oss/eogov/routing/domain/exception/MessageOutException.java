@@ -1,5 +1,6 @@
 package de.muenchen.oss.eogov.routing.domain.exception;
 
+@SuppressWarnings("PMD.MissingSerialVersionUID")
 public class MessageOutException extends RuntimeException {
     public MessageOutException(final String message) {
         super(message);

@@ -15,8 +15,8 @@ import org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition;
 @Configuration
 public class SoapConfiguration {
     @Bean
-    public ServletRegistrationBean<?> webServicesRegistration(ApplicationContext ctx) {
-        MessageDispatcherServlet messageDispatcherServlet = new MessageDispatcherServlet();
+    public ServletRegistrationBean<?> webServicesRegistration(final ApplicationContext ctx) {
+        final MessageDispatcherServlet messageDispatcherServlet = new MessageDispatcherServlet();
         messageDispatcherServlet.setApplicationContext(ctx);
         messageDispatcherServlet.setTransformWsdlLocations(true);
         return new ServletRegistrationBean<>(messageDispatcherServlet, "/api/soap", "*.wsdl");
@@ -24,7 +24,7 @@ public class SoapConfiguration {
 
     @Bean
     public Jaxb2Marshaller marshaller() {
-        Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
+        final Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
         marshaller.setContextPath("de.cit.xmlns.intelliform._2009.webservices.backend");
         marshaller.setMtomEnabled(true);
         return marshaller;
@@ -45,7 +45,7 @@ public class SoapConfiguration {
 
     @Bean
     public SimpleWsdl11Definition wsdl() {
-        SimpleWsdl11Definition definition = new SimpleWsdl11Definition();
+        final SimpleWsdl11Definition definition = new SimpleWsdl11Definition();
         definition.setWsdl(new ClassPathResource("/wsdl/ApplicationService.wsdl"));
         return definition;
     }

@@ -76,7 +76,7 @@ public class MessageDispatchUseCase implements MessageDispatchInPort {
     protected String resolveDestinationBinding(final DepositData data) {
         return data.getCustomParameters().stream()
                 .filter(
-                        i -> i.getKey().equals(ROUTING_KEY))
+                        i -> ROUTING_KEY.equals(i.getKey()))
                 .map(Entry::getValue)
                 .findFirst()
                 // TODO custom Exception

@@ -26,7 +26,7 @@ public class S3Adapter implements PresignedUrlOutPort {
     private final DocumentStorageFileRepository fileRepository;
     private final PresignedUrlRepository presignedUrlRepository;
     private final MinioClient minioClient;
-    final S3IntegrationProperties s3IntegrationProperties;
+    private final S3IntegrationProperties s3IntegrationProperties;
     private final S3Properties s3Properties;
 
     @Override
