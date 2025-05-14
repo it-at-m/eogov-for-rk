@@ -1,0 +1,37 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:29092
+          configuration:
+            security:
+              protocol: PLAINTEXT
+      output-bindings: test-out
+      bindings:
+        test-out:
+          destination: eogov-test
+          producer:
+            auto-startup: true
+
+eogov:
+  s3:
+    presigned-url-lifetime: 7d
+
+refarch:
+  s3:
+    url: http://localhost:9000
+    bucketName: eogov-bucket
+    accessKey: minio
+    secretKey: Test1234
+
+logging:
+  structured:
+    format:
+      console:
+  level:
+    de:
+      muenchen:
+        oss:
+          eogov:
+            routing: debug

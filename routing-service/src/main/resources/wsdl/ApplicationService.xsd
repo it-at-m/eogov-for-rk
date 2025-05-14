@@ -1,0 +1,117 @@
+<xs:schema targetNamespace="http://xmlns.cit.de/intelliform/2009/webservices/backend" version="1.0" xmlns:tns="http://xmlns.cit.de/intelliform/2009/webservices/backend" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+  <xs:element name="ApplicationFault" type="tns:ApplicationFault"/>
+  <xs:element name="deposit" type="tns:deposit"/>
+  <xs:element name="depositResponse" type="tns:depositResponse"/>
+  <xs:element name="prefill" type="tns:prefill"/>
+  <xs:element name="prefillResponse" type="tns:prefillResponse"/>
+  <xs:complexType name="prefill">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="data" type="tns:prefillData"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="prefillData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="caller" type="xs:string"/>
+      <xs:element minOccurs="0" name="client" type="xs:string"/>
+      <xs:element minOccurs="0" name="clientId" type="xs:string"/>
+      <xs:element minOccurs="0" name="customParameters">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entry" type="tns:entry"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="customer" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerId" type="xs:string"/>
+      <xs:element minOccurs="0" name="form" type="xs:string"/>
+      <xs:element minOccurs="0" name="formId" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="sender" type="xs:string"/>
+      <xs:element minOccurs="0" name="username" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="entry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="key" type="xs:string"/>
+      <xs:element minOccurs="0" name="value" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="prefillResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:prefillResult"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="prefillResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="attachments">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="attachment" type="tns:attachment"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="customParameters">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entry" type="tns:entry"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="primaryDataAttachmentId" type="xs:string"/>
+      <xs:element minOccurs="0" name="primaryFormAttachmentId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="attachment">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="attributes" nillable="true" type="tns:entry"/>
+      <xs:element minOccurs="0" name="content" type="xs:base64Binary" xmime:expectedContentTypes="application/octet-stream"/>
+      <xs:element minOccurs="0" name="contentType" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ApplicationFault">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="customParameters" nillable="true" type="tns:entry"/>
+      <xs:element minOccurs="0" name="faultId" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+      <xs:element minOccurs="0" name="userMessage" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deposit">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="data" type="tns:depositData"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="depositData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="attachments" nillable="true" type="tns:attachment"/>
+      <xs:element minOccurs="0" name="caller" type="xs:string"/>
+      <xs:element minOccurs="0" name="client" type="xs:string"/>
+      <xs:element minOccurs="0" name="clientId" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="customParameters" nillable="true" type="tns:entry"/>
+      <xs:element minOccurs="0" name="customer" type="xs:string"/>
+      <xs:element minOccurs="0" name="customerId" type="xs:string"/>
+      <xs:element minOccurs="0" name="form" type="xs:string"/>
+      <xs:element minOccurs="0" name="formId" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="primaryDataAttachmentId" type="xs:string"/>
+      <xs:element minOccurs="0" name="primaryFormAttachmentId" type="xs:string"/>
+      <xs:element minOccurs="0" name="sender" type="xs:string"/>
+      <xs:element minOccurs="0" name="timestamp" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="username" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="depositResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:depositResult"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="depositResult">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="attachments" nillable="true" type="tns:attachment"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="customParameters" nillable="true" type="tns:entry"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
