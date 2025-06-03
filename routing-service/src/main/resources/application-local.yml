@@ -24,14 +24,3 @@ refarch:
     bucketName: eogov-bucket
     accessKey: minio
     secretKey: Test1234
-
-logging:
-  structured:
-    format:
-      console:
-  level:
-    de:
-      muenchen:
-        oss:
-          eogov:
-            routing: debug
