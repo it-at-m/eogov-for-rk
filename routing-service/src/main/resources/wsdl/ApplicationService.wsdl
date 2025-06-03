@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ApplicationService" targetNamespace="http://xmlns.cit.de/intelliform/2009/webservices/backend" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.cit.de/intelliform/2009/webservices/backend" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://xmlns.cit.de/intelliform/2009/webservices/backend" schemaLocation="ApplicationService.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="deposit">
+    <part name="parameters" element="tns:deposit">
+    </part>
+  </message>
+  <message name="prefill">
+    <part name="parameters" element="tns:prefill">
+    </part>
+  </message>
+  <message name="ApplicationFault">
+    <part name="fault" element="tns:ApplicationFault">
+    </part>
+  </message>
+  <message name="prefillResponse">
+    <part name="parameters" element="tns:prefillResponse">
+    </part>
+  </message>
+  <message name="depositResponse">
+    <part name="parameters" element="tns:depositResponse">
+    </part>
+  </message>
+  <portType name="Application">
+    <operation name="deposit">
+      <input message="tns:deposit">
+    </input>
+      <output message="tns:depositResponse">
+    </output>
+      <fault name="ApplicationFault" message="tns:ApplicationFault">
+    </fault>
+    </operation>
+    <operation name="prefill">
+      <input message="tns:prefill">
+    </input>
+      <output message="tns:prefillResponse">
+    </output>
+      <fault name="ApplicationFault" message="tns:ApplicationFault">
+    </fault>
+    </operation>
+  </portType>
+  <binding name="ApplicationPortBinding" type="tns:Application">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="deposit">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="ApplicationFault">
+        <soap:fault name="ApplicationFault" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="prefill">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="ApplicationFault">
+        <soap:fault name="ApplicationFault" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="ApplicationService">
+    <port name="ApplicationPort" binding="tns:ApplicationPortBinding">
+      <soap:address location="http://CIT196:9000/backend/deposit"/>
+    </port>
+  </service>
+    <wsp:Policy xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702 http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/ws-securitypolicy-1.2.xsd">
+    <sp:SupportingTokens>
+      <wsp:Policy>
+        <sp:UsernameToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+          <wsp:Policy>
+            <sp:HashPassword/>
+          </wsp:Policy>
+        </sp:UsernameToken>
+      </wsp:Policy>
+    </sp:SupportingTokens>
+  </wsp:Policy>
+</definitions>
