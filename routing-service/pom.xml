@@ -13,7 +13,7 @@
     <artifactId>routing-service</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <name>routing-service</name>
-    <description>eoGOV service for routing incoming messaged from form server</description>
+    <description>eoGOV service for routing incoming messages from form server</description>
     <url>https://github.com/it-at-m/eogov-for-rk</url>
 
     <properties>
