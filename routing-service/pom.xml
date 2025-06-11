@@ -14,8 +14,7 @@
     <version>0.1.0-SNAPSHOT</version>
     <name>routing-service</name>
     <description>eoGOV service for routing incoming messaged from form server</description>
-    <!-- TODO -->
-    <url>https://github.com/it-at-m/for-rk</url>
+    <url>https://github.com/it-at-m/eogov-for-rk</url>
 
     <properties>
         <!-- Compilation -->
@@ -438,10 +437,9 @@
     </build>
 
     <scm>
-        <!-- TODO -->
-        <url>https://github.com/it-at-m/for-rk.git</url>
-        <connection>scm:git:https://github.com/it-at-m/for-rk.git</connection>
-        <developerConnection>scm:git:https://github.com/it-at-m/for-rk.git</developerConnection>
+        <url>https://github.com/it-at-m/eogov-for-rk.git</url>
+        <connection>scm:git:https://github.com/it-at-m/eogov-for-rk.git</connection>
+        <developerConnection>scm:git:https://github.com/it-at-m/eogov-for-rk.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
     <licenses>
