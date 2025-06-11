@@ -79,7 +79,6 @@ public class MessageDispatchUseCase implements MessageDispatchInPort {
                         i -> ROUTING_KEY.equals(i.getKey()))
                 .map(Entry::getValue)
                 .findFirst()
-                // TODO custom Exception
-                .orElseThrow(() -> new IllegalStateException("Routing key not found in customParameters"));
+                .orElseThrow(() -> new RoutingException("Routing key not found in customParameters"));
     }
 }

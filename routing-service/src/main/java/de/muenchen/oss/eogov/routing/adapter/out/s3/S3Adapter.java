@@ -27,7 +27,6 @@ public class S3Adapter implements PresignedUrlOutPort {
     private final PresignedUrlRepository presignedUrlRepository;
     private final MinioClient minioClient;
     private final S3IntegrationProperties s3IntegrationProperties;
-    private final S3Properties s3Properties;
 
     @Override
     public String createFileAndCreatePresignedUrl(final String path, final InputStream content) {
@@ -38,7 +37,7 @@ public class S3Adapter implements PresignedUrlOutPort {
     protected String getPresignedUrl(final String key) {
         log.debug("S3: Creating presigned URL for object {}", key);
         try {
-            return this.presignedUrlRepository.getPresignedUrlGetFile(key, s3Properties.getPresignedUrlLifetimeMinutes());
+            return this.presignedUrlRepository.getPresignedUrlGetFile(key, s3IntegrationProperties.getPresignedUrlExpiresInMinutes());
         } catch (DocumentStorageClientErrorException | DocumentStorageServerErrorException | DocumentStorageException e) {
             throw new RuntimeException(e);
         }
