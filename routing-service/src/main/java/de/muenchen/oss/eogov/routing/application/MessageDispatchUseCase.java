@@ -6,6 +6,7 @@ import de.muenchen.oss.eogov.routing.application.port.in.MessageDispatchInPort;
 import de.muenchen.oss.eogov.routing.application.port.out.PresignedUrlOutPort;
 import de.muenchen.oss.eogov.routing.application.port.out.SendMessageOutPort;
 import de.muenchen.oss.eogov.routing.domain.exception.AttachmentException;
+import de.muenchen.oss.eogov.routing.domain.exception.RoutingException;
 import de.muenchen.oss.eogov.routing.domain.mapper.MessageMapper;
 import de.muenchen.oss.eogov.routing.domain.model.Attachment;
 import de.muenchen.oss.eogov.routing.domain.model.Message;
