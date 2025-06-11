@@ -12,6 +12,6 @@
   - head-branch: [ '^dep', '-dependency-' ]
 "Type: Security":
   - head-branch: [ '^sec', '-security-' ]
-"Template: Routing":
+"Component: Routing":
   - changed-files:
     - any-glob-to-any-file: ['routing-service/**']
