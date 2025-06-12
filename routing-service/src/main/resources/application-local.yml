@@ -1,4 +1,9 @@
 spring:
+  security:
+    user:
+      name: for
+      # pw: password
+      password: "{bcrypt}$2a$12$eQgzAB2v.y8lkVqfOjOaL.acj1Zp8HW87CNdHzdyOaoYqnHL0Tppy"
   cloud:
     stream:
       kafka:
