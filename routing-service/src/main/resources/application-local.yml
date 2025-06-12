@@ -14,13 +14,9 @@ spring:
           producer:
             auto-startup: true
 
-eogov:
-  s3:
-    presigned-url-lifetime: 7d
-
 refarch:
   s3:
     url: http://localhost:9000
-    bucketName: eogov-bucket
-    accessKey: minio
-    secretKey: Test1234
+    bucket-name: eogov-bucket
+    access-key: minio
+    secret-key: Test1234
