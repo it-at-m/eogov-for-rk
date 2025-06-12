@@ -1,0 +1,25 @@
+<jaxb:bindings version="3.0"
+       xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
+       xmlns:xs="http://www.w3.org/2001/XMLSchema"
+       jaxb:extensionBindingPrefixes="xjc annox"
+       xmlns:annox="urn:jaxb.jvnet.org:annox">
+
+    <jaxb:bindings schemaLocation="ApplicationService.xsd">
+        <jaxb:bindings node="//xs:complexType[@name='ApplicationFault']">
+            <annox:annotate target="class">
+                <annox:annotate annox:class="jakarta.xml.bind.annotation.XmlRootElement"
+                    name="ApplicationFault"/>
+            </annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='depositResponse']">
+            <annox:annotate target="class">
+                <annox:annotate annox:class="jakarta.xml.bind.annotation.XmlRootElement"/>
+            </annox:annotate>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='prefillResponse']">
+            <annox:annotate target="class">
+                <annox:annotate annox:class="jakarta.xml.bind.annotation.XmlRootElement"/>
+            </annox:annotate>
+        </jaxb:bindings>
+    </jaxb:bindings>
+</jaxb:bindings>

@@ -1,0 +1,33 @@
+spring:
+  security:
+    user:
+      name: for
+      # pw: password
+      password: "{bcrypt}$2a$12$eQgzAB2v.y8lkVqfOjOaL.acj1Zp8HW87CNdHzdyOaoYqnHL0Tppy"
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:29092
+          configuration:
+            security:
+              protocol: PLAINTEXT
+        bindings:
+          deposit-in-0:
+            consumer:
+              enable-dlq: true
+              dlq-name: eogov-rk-dlq-local
+      output-bindings: mpdzticketing
+      bindings:
+        deposit-in-0:
+          destination: eogov-rk-local
+          group: eogov-rk-local
+        mpdzticketing:
+          destination: eogov-dbs-local
+
+refarch:
+  s3:
+    url: http://localhost:9000
+    bucket-name: eogov-bucket
+    access-key: minio
+    secret-key: Test1234

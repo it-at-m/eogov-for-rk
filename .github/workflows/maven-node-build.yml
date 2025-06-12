@@ -29,7 +29,7 @@ jobs:
         uses: it-at-m/lhm_actions/action-templates/actions/action-maven-build@a7d25dbabec2057695f865169fdc411d475d4667 # v1.0.19
         with:
           app-path: ${{ matrix.app-path }}
-      - if: github.ref == 'refs/heads/main'
+      - # if: github.ref == 'refs/heads/main'
         uses: it-at-m/lhm_actions/action-templates/actions/action-build-image@a7d25dbabec2057695f865169fdc411d475d4667 # v1.0.19
         with:
           path: ${{ matrix.app-path }}
