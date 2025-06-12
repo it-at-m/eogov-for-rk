@@ -13,17 +13,17 @@ spring:
             security:
               protocol: PLAINTEXT
         bindings:
-          message-in-0:
+          deposit-in-0:
             consumer:
               enable-dlq: true
-              dlq-name: eogov-for-rk-dlq
+              dlq-name: eogov-rk-dlq-local
       output-bindings: mpdzticketing
       bindings:
-        message-in-0:
-          destination: eogov-for-rk
-          group: eogov-for-rk
+        deposit-in-0:
+          destination: eogov-rk-local
+          group: eogov-rk-local
         mpdzticketing:
-          destination: eogov-test
+          destination: eogov-dbs-local
 
 refarch:
   s3:

@@ -13,7 +13,7 @@ public class StreamingInAdapter {
     private final MessageDispatchInPort messageDispatchInPort;
 
     @Bean
-    public Consumer<Message> messageIn() {
+    public Consumer<Message> deposit() {
         return messageDispatchInPort::deposit;
     }
 }
