@@ -12,12 +12,18 @@ spring:
           configuration:
             security:
               protocol: PLAINTEXT
-      output-bindings: test-out
+        bindings:
+          message-in-0:
+            consumer:
+              enable-dlq: true
+              dlq-name: eogov-for-rk-dlq
+      output-bindings: mpdzticketing
       bindings:
-        test-out:
+        message-in-0:
+          destination: eogov-for-rk
+          group: eogov-for-rk
+        mpdzticketing:
           destination: eogov-test
-          producer:
-            auto-startup: true
 
 refarch:
   s3:

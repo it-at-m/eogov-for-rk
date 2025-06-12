@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class StreamingAdapter implements SendMessageOutPort {
+public class StreamingOutAdapter implements SendMessageOutPort {
     private final BindingService bindingService;
     private final StreamBridge streamBridge;
 

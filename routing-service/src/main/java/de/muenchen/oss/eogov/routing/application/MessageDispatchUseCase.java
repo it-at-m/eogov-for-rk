@@ -48,7 +48,24 @@ public class MessageDispatchUseCase implements MessageDispatchInPort {
             // TODO
             throw new RuntimeException(e);
         }
-        log.info("Message {} processed successfully", data.getId());
+        log.info("Soap message {} processed successfully", data.getId());
+    }
+
+    @Override
+    public void deposit(final Message message) {
+        // resolve destination
+        final String destinationBinding = message.customParameters().get(ROUTING_KEY);
+        if (StringUtils.isBlank(destinationBinding)) {
+            throw new RoutingException("Routing key not found in customParameters");
+        }
+        // check if destination with resolved key exists
+        // TODO centralize
+        if (!this.sendMessageOutPort.destinationExists(destinationBinding)) {
+            throw new RoutingException(String.format("Route with key %s doesn't exist", destinationBinding));
+        }
+        // send message
+        this.sendMessageOutPort.sendMessage(destinationBinding, message);
+        log.info("Streaming message {} processed successfully", message.id());
     }
 
     protected List<Attachment> mapAttachments(final String messageId, final List<de.cit.xmlns.intelliform._2009.webservices.backend.Attachment> attachments)
@@ -66,7 +83,7 @@ public class MessageDispatchUseCase implements MessageDispatchInPort {
             // upload attachment and get presigned url
             // append UUID as attachment id isn't unique
             final String path = String.format("%s/%s_%s%s", pathPrefix, attachment.getId(), UUID.randomUUID(), extension);
-            //final InputStream decodedContent = Base64.getDecoder().wrap(attachment.getContent().getInputStream());
+            // upload file to s3 and get presigned URL
             final String presignedUrl = presignedUrlOutPort.createFileAndCreatePresignedUrl(path, attachment.getContent().getInputStream());
             // map attachment
             return this.messageMapper.map(attachment, presignedUrl);
