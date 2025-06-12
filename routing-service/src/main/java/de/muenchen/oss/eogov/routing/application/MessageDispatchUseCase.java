@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.tika.mime.MimeTypeException;
 import org.apache.tika.mime.MimeTypes;
 import org.springframework.stereotype.Component;
@@ -75,11 +76,18 @@ public class MessageDispatchUseCase implements MessageDispatchInPort {
     }
 
     protected String resolveDestinationBinding(final DepositData data) {
-        return data.getCustomParameters().stream()
+        // get destination from routing key custom parameter
+        final String destinationBinding = data.getCustomParameters().stream()
                 .filter(
                         i -> ROUTING_KEY.equals(i.getKey()))
                 .map(Entry::getValue)
+                .filter(StringUtils::isNotEmpty)
                 .findFirst()
                 .orElseThrow(() -> new RoutingException("Routing key not found in customParameters"));
+        // check if destination with resolved key exists
+        if (!this.sendMessageOutPort.destinationExists(destinationBinding)) {
+            throw new RoutingException(String.format("Route with key %s doesn't exist", destinationBinding));
+        }
+        return destinationBinding;
     }
 }
