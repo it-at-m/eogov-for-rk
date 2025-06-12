@@ -25,7 +25,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @Slf4j
 public class MessageDispatchUseCase implements MessageDispatchInPort {
-    private static final String ROUTING_KEY = "for-kafka-routing-target";
+    private static final String ROUTING_KEY = "for-routing-target";
 
     private final PresignedUrlOutPort presignedUrlOutPort;
     private final SendMessageOutPort sendMessageOutPort;
