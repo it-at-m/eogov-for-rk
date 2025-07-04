@@ -11,6 +11,7 @@ import de.muenchen.oss.eogov.routing.domain.mapper.MessageMapper;
 import de.muenchen.oss.eogov.routing.domain.model.Attachment;
 import de.muenchen.oss.eogov.routing.domain.model.Message;
 import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -73,7 +74,7 @@ public class MessageDispatchUseCase implements MessageDispatchInPort {
         final String pathPrefix = String.format("%s/%s",
                 LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE),
                 messageId);
-        return attachments.parallelStream().map(i -> this.mapAttachment(pathPrefix, i)).toList();
+        return attachments.stream().map(i -> this.mapAttachment(pathPrefix, i)).toList();
     }
 
     protected Attachment mapAttachment(final String pathPrefix, final de.cit.xmlns.intelliform._2009.webservices.backend.Attachment attachment) {
