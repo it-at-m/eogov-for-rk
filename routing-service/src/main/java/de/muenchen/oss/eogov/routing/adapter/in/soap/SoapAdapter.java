@@ -1,26 +1,34 @@
 package de.muenchen.oss.eogov.routing.adapter.in.soap;
 
-import de.cit.xmlns.intelliform._2009.webservices.backend.Deposit;
-import de.cit.xmlns.intelliform._2009.webservices.backend.DepositData;
+import de.cit.xmlns.intelliform._2009.webservices.backend.*;
 import de.muenchen.oss.eogov.routing.application.port.in.MessageDispatchInPort;
-import jakarta.xml.bind.JAXBElement;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.ws.server.endpoint.annotation.Endpoint;
-import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
-import org.springframework.ws.server.endpoint.annotation.RequestPayload;
+import org.springframework.stereotype.Service;
 
-@Endpoint
+@Service
 @RequiredArgsConstructor
 @Slf4j
-public class SoapAdapter {
-    private static final String NAMESPACE_URI = "http://xmlns.cit.de/intelliform/2009/webservices/backend";
-
+public class SoapAdapter implements Application {
     private final MessageDispatchInPort messageDispatchInPort;
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "deposit")
-    public void deposit(@RequestPayload final JAXBElement<Deposit> message) {
-        final DepositData data = message.getValue().getData();
-        messageDispatchInPort.soapDeposit(data);
+    @Override
+    public PrefillResult prefill(PrefillData data) {
+        throw new IllegalStateException("Not implemented");
+    }
+
+    @Override
+    public DepositResult deposit(final DepositData data) throws ApplicationFault_Exception {
+        try {
+            messageDispatchInPort.soapDeposit(data);
+        } catch (final RuntimeException e) {
+            log.error(e.getMessage(), e);
+            final ApplicationFault fault = new ApplicationFault();
+            fault.setMessage(e.getMessage());
+            // TODO
+            fault.setUserMessage("");
+            throw new ApplicationFault_Exception(e.getMessage(), fault, e);
+        }
+        return null;
     }
 }

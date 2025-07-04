@@ -36,6 +36,9 @@ spring:
             trusted:
               packages: 'de.cit.*,javax.xml.*'
 
+cxf:
+  path: /api/soap
+
 server:
   shutdown: "graceful"
   port: 8080
