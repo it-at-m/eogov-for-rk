@@ -84,10 +84,11 @@ public class MessageDispatchUseCase implements MessageDispatchInPort {
             // upload attachment and get presigned url
             // append UUID as attachment id isn't unique
             final String path = String.format("%s/%s_%s%s", pathPrefix, attachment.getId(), UUID.randomUUID(), extension);
-            // get content as InputStream
-            final InputStream content = attachment.getContent().getInputStream();
             // upload file to s3 and get presigned URL
-            final String presignedUrl = presignedUrlOutPort.createFileAndCreatePresignedUrl(path, content);
+            final String presignedUrl;
+            try (InputStream content = attachment.getContent().getInputStream()) {
+                presignedUrl = presignedUrlOutPort.createFileAndCreatePresignedUrl(path, content);
+            }
             // map attachment
             return this.messageMapper.map(attachment, presignedUrl);
         } catch (final MimeTypeException | IOException | RuntimeException e) {
