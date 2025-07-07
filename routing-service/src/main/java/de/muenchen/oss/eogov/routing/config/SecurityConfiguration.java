@@ -44,8 +44,8 @@ public class SecurityConfiguration {
                         .permitAll())
                 .authorizeHttpRequests((requests) -> requests.requestMatchers("/**")
                         .authenticated())
-                .sessionManagement(sessionManagement ->
-                        sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(sessionManagement -> sessionManagement
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .csrf(AbstractHttpConfigurer::disable)
                 .httpBasic(Customizer.withDefaults());
         return http.build();
