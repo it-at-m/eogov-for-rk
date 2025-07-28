@@ -38,8 +38,8 @@ public class S3Adapter implements PresignedUrlOutPort {
         log.debug("S3: Creating presigned URL for object {}", key);
         try {
             return this.presignedUrlRepository.getPresignedUrlGetFile(key, s3IntegrationProperties.getPresignedUrlExpiresInMinutes());
-        } catch (DocumentStorageClientErrorException | DocumentStorageServerErrorException | DocumentStorageException e) {
-            throw new RuntimeException(e);
+        } catch (final DocumentStorageClientErrorException | DocumentStorageServerErrorException | DocumentStorageException e) {
+            throw new S3Exception("Failed to create presigned URL for key: " + key, e);
         }
     }
 
@@ -54,7 +54,7 @@ public class S3Adapter implements PresignedUrlOutPort {
             minioClient.putObject(request);
             log.info("S3: Put object to {}", key);
         } catch (final MinioException | InvalidKeyException | IOException | NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
+            throw new S3Exception("Failed to upload object to key: " + key, e);
         }
     }
 }

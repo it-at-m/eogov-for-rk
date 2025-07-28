@@ -13,6 +13,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  * Configures the security context to not require any authorization for incoming requests.
+ * <p>
+ * WARNING: This configuration disables ALL security and should ONLY be used for
+ * local development and testing. Never activate the 'no-security' profile in production.
  */
 @Configuration
 @Profile("no-security")

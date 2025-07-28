@@ -34,7 +34,7 @@ spring:
         spring:
           json:
             trusted:
-              packages: 'de.cit.*,javax.xml.*'
+              packages: 'de.muenchen.oss.eogov.routing.domain.model'
 
 cxf:
   path: /api/soap

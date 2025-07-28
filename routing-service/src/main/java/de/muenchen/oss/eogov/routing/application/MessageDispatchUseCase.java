@@ -36,19 +36,14 @@ public class MessageDispatchUseCase implements MessageDispatchInPort {
     @Override
     public void soapDeposit(final DepositData data) {
         log.info("Received message {} from form {}", data.getId(), data.getFormId());
-        try {
-            // resolve destination
-            final String destinationBinding = this.resolveDestinationBinding(data);
-            // map attachments
-            final List<Attachment> attachments = this.mapAttachments(data.getId(), data.getAttachments());
-            // map message
-            final Message message = messageMapper.map(data, attachments);
-            // send message
-            this.sendMessageOutPort.sendMessage(destinationBinding, message);
-        } catch (final IOException | MimeTypeException e) {
-            // TODO
-            throw new RuntimeException(e);
-        }
+        // resolve destination
+        final String destinationBinding = this.resolveDestinationBinding(data);
+        // map attachments
+        final List<Attachment> attachments = this.mapAttachments(data.getId(), data.getAttachments());
+        // map message
+        final Message message = messageMapper.map(data, attachments);
+        // send message
+        this.sendMessageOutPort.sendMessage(destinationBinding, message);
         log.info("Soap message {} processed successfully", data.getId());
     }
 
@@ -69,8 +64,7 @@ public class MessageDispatchUseCase implements MessageDispatchInPort {
         log.info("Streaming message {} processed successfully", message.id());
     }
 
-    protected List<Attachment> mapAttachments(final String messageId, final List<de.cit.xmlns.intelliform._2009.webservices.backend.Attachment> attachments)
-            throws IOException, MimeTypeException {
+    protected List<Attachment> mapAttachments(final String messageId, final List<de.cit.xmlns.intelliform._2009.webservices.backend.Attachment> attachments) {
         final String pathPrefix = String.format("%s/%s",
                 LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE),
                 messageId);
