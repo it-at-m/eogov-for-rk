@@ -15,3 +15,6 @@
 "Component: Routing":
   - changed-files:
     - any-glob-to-any-file: ['routing-service/**']
+"Component: Zammad-FK":
+  - changed-files:
+      - any-glob-to-any-file: ['zammad-fk/**']
