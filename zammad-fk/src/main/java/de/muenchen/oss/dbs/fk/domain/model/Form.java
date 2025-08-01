@@ -9,6 +9,7 @@ import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
 @Data
+@SuppressWarnings("PMD.ShortClassName")
 public class Form {
     private final Map<String, Object> inputs = new HashMap<>();
     private String lhmExtID;
