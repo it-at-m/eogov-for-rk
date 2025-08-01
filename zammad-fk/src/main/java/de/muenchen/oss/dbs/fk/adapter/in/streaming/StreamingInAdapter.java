@@ -15,8 +15,9 @@ public class StreamingInAdapter {
     private final MessageInPort messageInPort;
 
     @Bean
-    public Consumer<Message> message() {
-        return message -> {
+    public Consumer<org.springframework.messaging.Message<Message>> message() {
+        return springMessage -> {
+            final Message message = springMessage.getPayload();
             try {
                 log.info("Processing message: {}", message.id());
                 messageInPort.process(message);
