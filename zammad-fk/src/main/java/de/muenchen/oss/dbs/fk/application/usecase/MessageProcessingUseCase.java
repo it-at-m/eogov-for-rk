@@ -10,10 +10,8 @@ import de.muenchen.oss.dbs.fk.domain.exception.FormParsingException;
 import de.muenchen.oss.dbs.fk.domain.model.Attachment;
 import de.muenchen.oss.dbs.fk.domain.model.Form;
 import de.muenchen.oss.dbs.fk.domain.model.Message;
-
 import java.io.IOException;
 import java.io.InputStream;
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

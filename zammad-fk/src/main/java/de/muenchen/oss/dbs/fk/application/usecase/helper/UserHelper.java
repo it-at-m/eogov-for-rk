@@ -5,12 +5,11 @@ import de.muenchen.oss.dbs.fk.domain.model.Form;
 import de.muenchen.oss.dbs.zammad.eai.CreateUserDTO;
 import de.muenchen.oss.dbs.zammad.eai.User;
 import jakarta.validation.Valid;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
-
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor

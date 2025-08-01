@@ -9,11 +9,6 @@ import de.muenchen.oss.dbs.fk.domain.model.Message;
 import de.muenchen.oss.dbs.zammad.eai.AttachmentDTO;
 import de.muenchen.oss.dbs.zammad.eai.CreateTicketArticleDTO;
 import de.muenchen.oss.dbs.zammad.eai.CreateTicketDTO;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.IOUtils;
-import org.springframework.stereotype.Component;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -23,6 +18,10 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
+import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
