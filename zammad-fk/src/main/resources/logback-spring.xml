@@ -22,7 +22,7 @@
         </appender>
 
         <!-- Logger -->
-        <logger name="de.muenchen.oss.eogov.routing"
+        <logger name="de.muenchen.oss.dbs.fk"
                 level="debug"
                 additivity="false">
             <appender-ref ref="STDOUT" />

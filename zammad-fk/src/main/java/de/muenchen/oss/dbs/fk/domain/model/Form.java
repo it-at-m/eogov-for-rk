@@ -48,17 +48,20 @@ public class Form {
         return this.getFirstname() != null || this.getLastname() != null || this.mail != null;
     }
 
+    private boolean shouldUseActingPerson() {
+        return accountSource.equals(AccountSource.ELSTER_NEZO.name()) && StringUtils.isNotBlank(this.actingPersonFirstname)
+                && StringUtils.isNotBlank(this.actingPersonLastname);
+    }
+
     public String getFirstname() {
-        if (accountSource.equals(AccountSource.ELSTER_NEZO.name()) && StringUtils.isNotBlank(this.actingPersonFirstname)
-                && StringUtils.isNotBlank(this.actingPersonLastname)) {
+        if (shouldUseActingPerson()) {
             return this.actingPersonFirstname;
         }
         return this.firstname;
     }
 
     public String getLastname() {
-        if (accountSource.equals(AccountSource.ELSTER_NEZO.name()) && StringUtils.isNotBlank(this.actingPersonFirstname)
-                && StringUtils.isNotBlank(this.actingPersonLastname)) {
+        if (shouldUseActingPerson()) {
             return this.actingPersonLastname;
         }
         return this.lastname;

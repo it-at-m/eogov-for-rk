@@ -27,6 +27,9 @@ public record Message(
         Map<String, String> customParameters) {
 
     public Optional<Attachment> getAttachment(final String id) {
+        if (attachments == null) {
+            return Optional.empty();
+        }
         return this.attachments.stream()
                 .filter(i -> i.id().equals(id))
                 .findFirst();

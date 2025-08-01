@@ -35,7 +35,6 @@ public class ArticleHelper {
         createArticleDTO.setType(CreateArticleDTO.TypeEnum.NOTE);
         createArticleDTO.setContentType(CONTENT_TYPE_HTML);
         createArticleDTO.setInternal(true);
-        // FIXME 422
         createArticleDTO.setAttachments(this.genInternalArticleAttachments(message));
         final String articleId = ticketingOutPort.createArticle(ticketId, createArticleDTO);
         log.info("Created internal article {} on ticket {}", articleId, ticketId);
