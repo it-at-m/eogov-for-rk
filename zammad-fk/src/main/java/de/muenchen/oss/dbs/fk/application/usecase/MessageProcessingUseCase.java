@@ -40,7 +40,7 @@ public class MessageProcessingUseCase implements MessageInPort {
     private final static String ARTICLE_TYPE_WEB = "web";
     private final static String CONTENT_TYPE_HTML = "text/html";
     private final static String SUMMARY_ATTACHMENT_ID = "summary";
-    private static final String ARTICLE_DEFAULT_FALLBACK_BODY = "Die Zusammenfassung Ihres Anliegens konnte nicht geladen werden." +
+    private static final String ARTICLE_DEFAULT_FALLBACK_BODY = "Die Zusammenfassung Ihres Anliegens konnte nicht geladen werden. " +
             "Die Daten sind dennoch erfolgreich bei uns eingegangen.";
     public static final String ARTICLE_INTERNAL_ATTACHMENTS_TEXT = "Interner Artikel für interne Anhänge";
 
@@ -171,8 +171,7 @@ public class MessageProcessingUseCase implements MessageInPort {
                             attachmentDTO.setMimeType(attachment.contentType());
                             attachmentDTO.setFilename(attachment.name());
                             attachmentDTO.setPreferences(Map.of(
-                                    "Mime-Type", attachment.contentType()
-                            ));
+                                    "Mime-Type", attachment.contentType()));
                             try (InputStream content = attachment.getInputStream(this.attachmentOutPort)) {
                                 // FIXME streaming
                                 final String attachmentBase64 = Base64.getEncoder().encodeToString(content.readAllBytes());

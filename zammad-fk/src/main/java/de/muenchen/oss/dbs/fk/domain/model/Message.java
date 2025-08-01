@@ -25,6 +25,7 @@ public record Message(
         @NotNull ZonedDateTime timestamp,
         List<Attachment> attachments,
         Map<String, String> customParameters) {
+
     public Optional<Attachment> getAttachment(final String id) {
         return this.attachments.stream()
                 .filter(i -> i.id().equals(id))

@@ -1,14 +1,11 @@
 package de.muenchen.oss.dbs.fk.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.validation.constraints.AssertTrue;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
 @Data

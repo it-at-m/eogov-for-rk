@@ -12,9 +12,7 @@ import de.muenchen.oss.dbs.zammad.eai.TicketsApi;
 import de.muenchen.oss.dbs.zammad.eai.User;
 import de.muenchen.oss.dbs.zammad.eai.UsersApi;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.web.server.WebServerException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClientException;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 @Service
