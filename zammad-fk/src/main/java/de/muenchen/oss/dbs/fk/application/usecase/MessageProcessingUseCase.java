@@ -23,7 +23,7 @@ public class MessageProcessingUseCase implements MessageInPort {
     private final UserHelper userHelper;
     private final TicketHelper ticketHelper;
     private final ArticleHelper articleHelper;
-    private final XmlMapper xmlMapper;
+    private final XmlMapper xmlMapper = new XmlMapper();
     private final AttachmentOutPort attachmentOutPort;
 
     @Override
