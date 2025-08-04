@@ -49,7 +49,7 @@ public class Form {
     }
 
     private boolean shouldUseActingPerson() {
-        return accountSource.equals(AccountSource.ELSTER_NEZO.name()) && StringUtils.isNotBlank(this.actingPersonFirstname)
+        return AccountSource.ELSTER_NEZO.name().equals(accountSource) && StringUtils.isNotBlank(this.actingPersonFirstname)
                 && StringUtils.isNotBlank(this.actingPersonLastname);
     }
 
