@@ -25,7 +25,7 @@ Repository for components around eoGOV (e and open government) FOR-RK (german "F
 
 ```mermaid
 flowchart LR
-  cib[CIB7 form server] -->|SOAP MTOM| rk[routing-service]
+  cib[cit intelliForm form server] -->|SOAP MTOM| rk[routing-service]
   rk --> S3
   rk -->|Kafka| FK1
   rk -->|Kafka| FK2
