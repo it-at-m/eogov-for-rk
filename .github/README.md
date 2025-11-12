@@ -23,9 +23,20 @@
 
 Repository for components around eoGOV (e and open government) FOR-RK (german "Formularserver Routing-Komponenten", formserver routing component).
 
+```mermaid
+flowchart LR
+  cib[CIB7 form server] -->|SOAP MTOM| rk[routing-service]
+  rk --> S3
+  rk -->|Kafka| FK1
+  rk -->|Kafka| FK2
+```
+
 ## Components
 
 - [routing-service](../routing-service): POC for a routing service using S3 and Kafka.
+- [zammad-fk](../zammad-fk): POC service (FK) for reciving Kafka events from routing-service and creating tickets in [dbs](https://github.com/it-at-m/dbs)
+
+FK: stands for german "Fachkomponente" and describes form handling services
 
 ## Contributing
 
