@@ -5,8 +5,8 @@
 [//]: # ([documentation]: ../docs)
 [contribution-documentation]: https://refarch.oss.muenchen.de/contribute
 [itm-opensource]: https://opensource.muenchen.de/
-[license]: ../LICENSE
-[code-of-conduct]: ./CODE_OF_CONDUCT.md
+[license]: LICENSE
+[code-of-conduct]: .github/CODE_OF_CONDUCT.md
 
 <!-- Shields.io links -->
 [documentation-shield]: https://img.shields.io/badge/documentation-blue?style=for-the-badge
@@ -23,18 +23,22 @@
 
 Repository for components around eoGOV (e and open government) FOR-RK (german "Formularserver Routing-Komponenten", formserver routing component).
 
+**⚠️ WARNING: POC state**
+
 ```mermaid
 flowchart LR
   cib[cit intelliForm form server] -->|SOAP MTOM| rk[routing-service]
   rk --> S3
-  rk -->|Kafka| FK1
-  rk -->|Kafka| FK2
+  rk -->|Kafka| FK1 --> S1
+  rk -->|Kafka| FK2 --> S2
+  FK1 --> |presigned URL|S3
+  FK2 --> |presigned URL|S3
 ```
 
 ## Components
 
-- [routing-service](../routing-service): POC for a routing service using S3 and Kafka.
-- [zammad-fk](../zammad-fk): POC service (FK) for reciving Kafka events from routing-service and creating tickets in [dbs](https://github.com/it-at-m/dbs)
+- [routing-service](./routing-service): POC for a routing service using S3 and Kafka.
+- [zammad-fk](./zammad-fk): POC service (FK) for receiving Kafka events from routing-service and creating tickets in [dbs](https://github.com/it-at-m/dbs)
 
 FK: stands for german "Fachkomponente" and describes form handling services
 
