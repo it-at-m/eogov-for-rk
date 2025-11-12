@@ -29,8 +29,8 @@ Repository for components around eoGOV (e and open government) FOR-RK (german "F
 flowchart LR
   cib[cit intelliForm form server] -->|SOAP MTOM| rk[routing-service]
   rk --> S3
-  rk -->|Kafka| FK1 --> S1
-  rk -->|Kafka| FK2 --> S2
+  rk -->|Kafka| FK1 --> s1[Service 1]
+  rk -->|Kafka| FK2 --> s2[Service 2]
   FK1 --> |presigned URL|S3
   FK2 --> |presigned URL|S3
 ```
