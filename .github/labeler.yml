@@ -12,4 +12,9 @@
   - head-branch: [ '^dep', '-dependency-' ]
 "Type: Security":
   - head-branch: [ '^sec', '-security-' ]
-
+"Component: Routing":
+  - changed-files:
+    - any-glob-to-any-file: ['routing-service/**']
+"Component: Zammad-FK":
+  - changed-files:
+      - any-glob-to-any-file: ['zammad-fk/**']

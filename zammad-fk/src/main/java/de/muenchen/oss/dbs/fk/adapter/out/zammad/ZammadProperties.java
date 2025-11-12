@@ -1,0 +1,14 @@
+package de.muenchen.oss.dbs.fk.adapter.out.zammad;
+
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.validation.annotation.Validated;
+
+@ConfigurationProperties("dbs.zammad")
+@Data
+@Validated
+class ZammadProperties {
+    @NotBlank
+    private String baseUrl;
+}
